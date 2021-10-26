@@ -1,3 +1,7 @@
+import { enableResults } from './battle-manager.js'
+import { disableResults } from './battle-manager.js'
+import { changeBattleValues } from './battle-manager.js'
+
 export const handleInput = (query, getPokemons) => {
   const formElement = document.querySelector(query)
   const selectElements = formElement.querySelectorAll('select')
@@ -16,10 +20,12 @@ export const handleInput = (query, getPokemons) => {
 const submitForm = async (values, getPokemons) => {
   const selectedPokemons = await getPokemons(values)
   changeDisplayValues(selectedPokemons)
+  changeBattleValues(selectedPokemons)
 }
 
 const changeDisplayValues = (selectedPokemons) => {
   const cards = document.querySelectorAll('.pokemon-card')
+  let areThreeSelected = true
   cards.forEach((card, key) => {
     const hp = card.querySelector('.hp-value')
     const atk = card.querySelector('.atk-value')
@@ -36,6 +42,8 @@ const changeDisplayValues = (selectedPokemons) => {
       spd.innerText = ''
       img.src = ''
       figure.style.display = 'none'
+      areThreeSelected = false
+      console.log("One or more isn't selected!")
       return
     }
 
@@ -47,4 +55,7 @@ const changeDisplayValues = (selectedPokemons) => {
     img.src = selectedPokemons[key].sprites.front_default
     figure.style.display = 'block'
   })
+
+  if (!areThreeSelected) return disableResults()
+  enableResults(selectedPokemons)
 }
