@@ -188,3 +188,12 @@ h2 {
 #results footer {
   padding-bottom: 4rem;
 }
+
+.winner {
+  background-color: rgb(155, 255, 56);
+}
+
+.loser {
+  background-color: darkred;
+  color: #fff;
+}

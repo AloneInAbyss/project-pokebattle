@@ -43,7 +43,6 @@ const changeDisplayValues = (selectedPokemons) => {
       img.src = ''
       figure.style.display = 'none'
       areThreeSelected = false
-      console.log("One or more isn't selected!")
       return
     }
 
