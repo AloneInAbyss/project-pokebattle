@@ -3,6 +3,11 @@ export async function getPokemons(array) {
   return parsePokemons(pokemonsList)
 }
 
+export async function getPokemonsNames(generation) {
+  const pokemonsNames = await fetchPokemonsNames(generation)
+  return parsePokemonsNames(pokemonsNames)
+}
+
 const fetchPokemons = async (names) => {
   const pokemons = names.map(async (name) => {
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
@@ -34,5 +39,20 @@ const parsePokemons = (pokemons) => {
       },
       { name: pokemon.name, stats: [], sprites: pokemon.sprites }
     )
+  })
+}
+
+export const fetchPokemonsNames = async (generation) => {
+  const response = await fetch(
+    `https://pokeapi.co/api/v2/generation/${generation}/`
+  )
+  if (response.status !== 200) return
+  const data = await response.json()
+  return data
+}
+
+const parsePokemonsNames = (data) => {
+  return data.pokemon_species.map((pokemon) => {
+    return pokemon.name
   })
 }

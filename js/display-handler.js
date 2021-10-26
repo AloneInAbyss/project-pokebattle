@@ -2,6 +2,26 @@ import { enableResults } from './battle-manager.js'
 import { disableResults } from './battle-manager.js'
 import { changeBattleValues } from './battle-manager.js'
 
+export const addSelectOptions = async (
+  query,
+  fetchPokemonsNames,
+  generation
+) => {
+  const formElement = document.querySelector(query)
+  const selectElements = formElement.querySelectorAll(
+    '.pokemon-selector select'
+  )
+  const options = await fetchPokemonsNames(generation)
+  selectElements.forEach((selectElement) => {
+    options.forEach((element) => {
+      const option = document.createElement('option')
+      option.value = element
+      option.innerText = element.charAt(0).toUpperCase() + element.slice(1)
+      selectElement.appendChild(option)
+    })
+  })
+}
+
 export const handleInput = (query, getPokemons) => {
   const formElement = document.querySelector(query)
   const selectElements = formElement.querySelectorAll('select')
