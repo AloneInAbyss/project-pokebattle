@@ -1,0 +1,92 @@
+:root {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  background-color: chocolate;
+}
+
+h1 {
+  text-align: center;
+  font-size: 3rem;
+  margin-top: 5rem;
+  margin-bottom: 3rem;
+}
+
+#pokemons-cards form {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.pokemon-selector {
+  margin: 2rem;
+  padding: 1.5rem;
+  background-color: bisque;
+  border-radius: 1rem;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+}
+
+.pokemon-selector label {
+  display: block;
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+}
+
+.pokemon-selector select {
+  width: 100%;
+  font-size: 1.3rem;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: #fff;
+}
+
+.pokemon-card {
+  margin-bottom: 2rem;
+  display: none;
+  flex-flow: column nowrap;
+}
+
+.pokemon-card .images {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+.pokemon-card figure {
+  display: none;
+  width: 100%;
+  max-width: 140px;
+  padding: 0.2rem;
+  background-color: #fff;
+  border-radius: 0.5rem;
+}
+
+.pokemon-card img {
+  width: 100%;
+  max-width: 140px;
+  transition: all 0.5s;
+}
+
+.pokemon-card img:hover {
+  transition: all 0.5s;
+  transform: scale(1.1);
+}
+
+.pokemon-card .attributes {
+  margin-top: 0.5rem;
+  font-size: 1.3rem;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+
+.pokemon-card .attributes-names {
+  font-weight: bold;
+}
+
+.pokemon-card .attributes p {
+  margin-top: 1.5rem;
+}
