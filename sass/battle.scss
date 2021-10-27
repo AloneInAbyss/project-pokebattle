@@ -1,0 +1,24 @@
+.battle-selector {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+
+  label {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 0.75rem;
+  }
+
+  #battle-attribute {
+    width: auto;
+  }
+}
+
+.winner {
+  background-color: rgb(155, 255, 56);
+}
+
+.loser {
+  background-color: darkred;
+  color: #fff;
+}

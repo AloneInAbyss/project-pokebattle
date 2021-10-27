@@ -1,0 +1,68 @@
+.card-group {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.card {
+  min-width: 230px;
+  margin: 2rem;
+  padding: 1.5rem;
+  background-color: bisque;
+  border-radius: 1rem;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+}
+.card .card-title {
+  display: block;
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+}
+.card .card-body {
+  display: flex;
+  flex-flow: column nowrap;
+  margin-bottom: 2rem;
+}
+
+#form-search-pokemons .card-body {
+  display: none;
+}
+
+.card-body .card-img {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+.card-body .card-attributes {
+  margin-top: 1.5rem;
+  font-size: 1.3rem;
+  line-height: 2.5rem;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+.card-body .card-attributes .attributes-names {
+  font-weight: bold;
+}
+
+.card-img figure {
+  width: 100%;
+  max-width: 140px;
+  padding: 0.2rem;
+  background-color: #fff;
+  border-radius: 0.5rem;
+}
+.card-img img {
+  width: 100%;
+  max-width: 140px;
+  transition: all 0.5s;
+}
+.card-img img:hover {
+  transform: scale(1.1);
+  transition: all 0.5s;
+}
+
+/*# sourceMappingURL=cards.css.map */

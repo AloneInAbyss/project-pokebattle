@@ -1,0 +1,24 @@
+.battle-selector {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+.battle-selector label {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+}
+.battle-selector #battle-attribute {
+  width: auto;
+}
+
+.winner {
+  background-color: #9bff38;
+}
+
+.loser {
+  background-color: darkred;
+  color: #fff;
+}
+
+/*# sourceMappingURL=battle.css.map */

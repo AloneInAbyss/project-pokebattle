@@ -8,15 +8,15 @@ export const addSelectOptions = async (
   generation
 ) => {
   const formElement = document.querySelector(query)
-  const selectElements = formElement.querySelectorAll(
-    '.pokemon-selector select'
-  )
+  const selectElements = formElement.querySelectorAll('select')
   const options = await fetchPokemonsNames(generation)
+
   selectElements.forEach((selectElement) => {
-    options.forEach((element) => {
+    options.forEach((pokemonName) => {
       const option = document.createElement('option')
-      option.value = element
-      option.innerText = element.charAt(0).toUpperCase() + element.slice(1)
+      option.value = pokemonName
+      option.innerText =
+        pokemonName.charAt(0).toUpperCase() + pokemonName.slice(1)
       selectElement.appendChild(option)
     })
   })
@@ -32,39 +32,32 @@ export const handleInput = (query, getPokemons) => {
       for (let element of selectElements.values()) {
         values.push(element.value)
       }
-      submitForm(values, getPokemons)
+      submitForm(values, getPokemons, query)
     })
   })
 }
 
-const submitForm = async (values, getPokemons) => {
+const submitForm = async (values, getPokemons, query) => {
   const selectedPokemons = await getPokemons(values)
-  changeDisplayValues(selectedPokemons)
+  changeDisplayValues(query, selectedPokemons)
   changeBattleValues(selectedPokemons)
 }
 
-const changeDisplayValues = (selectedPokemons) => {
-  const cards = document.querySelectorAll('.pokemon-card')
+const changeDisplayValues = (query, selectedPokemons) => {
+  const cards = document.querySelectorAll(`${query} .card-body`)
   let areThreeSelected = true
   cards.forEach((card, key) => {
+    if (!selectedPokemons[key]) {
+      card.style.display = 'none'
+      areThreeSelected = false
+      return
+    }
+
     const hp = card.querySelector('.hp-value')
     const atk = card.querySelector('.atk-value')
     const def = card.querySelector('.def-value')
     const spd = card.querySelector('.spd-value')
     const img = card.querySelector('img')
-    const figure = card.querySelector('figure')
-
-    if (!selectedPokemons[key]) {
-      card.style.display = 'none'
-      hp.innerText = ''
-      atk.innerText = ''
-      def.innerText = ''
-      spd.innerText = ''
-      img.src = ''
-      figure.style.display = 'none'
-      areThreeSelected = false
-      return
-    }
 
     card.style.display = 'flex'
     hp.innerText = selectedPokemons[key].stats[0].value
@@ -72,7 +65,6 @@ const changeDisplayValues = (selectedPokemons) => {
     def.innerText = selectedPokemons[key].stats[2].value
     spd.innerText = selectedPokemons[key].stats[3].value
     img.src = selectedPokemons[key].sprites.front_default
-    figure.style.display = 'block'
   })
 
   if (!areThreeSelected) return disableResults()

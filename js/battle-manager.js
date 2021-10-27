@@ -7,6 +7,7 @@ export const enableResults = (selectedPokemons) => {
 
   const formElement = document.querySelector('#form-pokebattle')
   const selectElement = formElement.querySelector('select')
+
   selectElement.addEventListener('change', (event) => {
     const attribute = selectElement.value
     const attributeList = {
@@ -29,7 +30,7 @@ export const enableResults = (selectedPokemons) => {
       }
     }
 
-    const cards = document.querySelectorAll('.pokemon-battle-card')
+    const cards = document.querySelectorAll('#results .card')
     cards.forEach((card, key) => {
       if (winner.includes(key)) {
         card.classList.add('winner')
@@ -40,6 +41,7 @@ export const enableResults = (selectedPokemons) => {
       card.classList.add('loser')
     })
   })
+
   selectElement.dispatchEvent(new Event('change'))
 }
 
@@ -49,7 +51,7 @@ export const disableResults = () => {
 }
 
 export const changeBattleValues = (selectedPokemons) => {
-  const cards = document.querySelectorAll('.pokemon-battle-card')
+  const cards = document.querySelectorAll('#results .card')
   cards.forEach((card, key) => {
     if (!selectedPokemons[key]) return
 
@@ -58,7 +60,6 @@ export const changeBattleValues = (selectedPokemons) => {
     const def = card.querySelector('.def-value')
     const spd = card.querySelector('.spd-value')
     const img = card.querySelector('img')
-    const figure = card.querySelector('figure')
     const name = card.querySelector('.pokemon-name')
 
     hp.innerText = selectedPokemons[key].stats[0].value
@@ -66,7 +67,6 @@ export const changeBattleValues = (selectedPokemons) => {
     def.innerText = selectedPokemons[key].stats[2].value
     spd.innerText = selectedPokemons[key].stats[3].value
     img.src = selectedPokemons[key].sprites.front_default
-    figure.style.display = 'block'
     name.innerText =
       selectedPokemons[key].name.charAt(0).toUpperCase() +
       selectedPokemons[key].name.slice(1)

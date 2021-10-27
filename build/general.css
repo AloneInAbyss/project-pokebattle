@@ -1,0 +1,75 @@
+:root {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  scroll-behavior: smooth;
+}
+
+#pokebattle {
+  background-color: chocolate;
+  min-height: 100vh;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+}
+#pokebattle footer {
+  visibility: hidden;
+}
+
+#results {
+  background-color: cornflowerblue;
+  min-height: 100vh;
+  display: none;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+}
+
+footer {
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+}
+footer a {
+  display: block;
+  font-size: 2.5rem;
+  text-align: center;
+  transition: all 0.5s;
+}
+footer a:active {
+  transform: scale(0.9);
+  transition: all 0.1s;
+}
+footer i {
+  font-size: 2rem;
+}
+
+h1 {
+  text-align: center;
+  font-size: 3rem;
+  padding-top: 4rem;
+  padding-bottom: 2rem;
+}
+
+h2 {
+  text-align: center;
+  font-size: 3rem;
+  padding-top: 4rem;
+  padding-bottom: 1rem;
+}
+
+select {
+  width: 100%;
+  font-size: 1.3rem;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  user-select: none;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=general.css.map */
